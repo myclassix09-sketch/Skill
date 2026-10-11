@@ -3,508 +3,758 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#101018">
-<meta name="description" content="VYBE Infinity: learn coding, build projects, play mind games and discover useful digital resources.">
-<title>VYBE Infinity | Learn Beyond Limits</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090b12">
+<meta name="description" content="VYBE Infinity — learn coding, build projects, solve quizzes, play brain games and explore the web.">
+<title>VYBE Infinity — Learn. Build. Play.</title>
+
 <style>
-:root{
- --bg:#101018;--panel:#191923;--panel2:#222230;--line:#333344;
- --text:#f6f5ff;--muted:#a6a5ba;--lime:#d7ff68;--purple:#bba5ff;
- --cyan:#78e9e5;--pink:#ff9fcf;--radius:18px
+:root {
+  --bg:#090b12; --panel:#111521; --panel2:#171c2b;
+  --line:#292f42; --text:#f3f5ff; --muted:#9ba4bd;
+  --lime:#c9ff54; --purple:#a58bff; --cyan:#5de4f5;
+  --pink:#ff80b5; --radius:19px;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:
+  radial-gradient(ellipse at 70% -10%,#29224c 0,transparent 35%),
+  radial-gradient(ellipse at -15% 35%,#112d36 0,transparent 27%),var(--bg);
+  color:var(--text);font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;
+}
 button,input,textarea,select{font:inherit}
-button,a{cursor:pointer}
-a{color:inherit;text-decoration:none}
-button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
-.layout{display:grid;grid-template-columns:235px minmax(0,1fr);min-height:100vh}
-aside{position:sticky;top:0;height:100vh;overflow:auto;background:#13131b;border-right:1px solid var(--line);padding:23px 15px;display:flex;flex-direction:column;gap:24px}
-.logo{display:flex;align-items:center;gap:10px;font-weight:950;font-size:23px;letter-spacing:-1px;padding:0 7px}
-.logo b{color:var(--lime)}
-.logo-icon{display:grid;place-items:center;width:39px;height:39px;background:var(--lime);color:#15151a;border-radius:12px;font-size:24px}
-.nav-label{font-size:10px;color:#77778d;letter-spacing:1.5px;padding:0 10px;margin-bottom:8px}
-nav{display:grid;gap:5px}
-nav button{border:1px solid transparent;background:transparent;color:var(--muted);padding:11px;border-radius:11px;text-align:left;font-size:12px}
-nav button:hover,nav button.active{background:var(--panel2);color:white;border-color:var(--line)}
-nav button.active{box-shadow:inset 3px 0 var(--lime)}
-.nav-icon{display:inline-block;width:27px;font-size:16px}
-.sidebar-note{margin-top:auto;padding:15px;background:var(--panel);border:1px solid var(--line);border-radius:15px;font-size:11px;color:var(--muted);line-height:1.7}
-.sidebar-note strong{color:var(--lime)}
-main{padding:24px clamp(14px,3vw,38px) 55px;min-width:0}
-header{display:flex;align-items:center;gap:12px;margin-bottom:24px}
-.mobile-logo{display:none;font-weight:950}
-.searchbar{flex:1;display:flex;align-items:center;gap:10px;padding:12px 15px;background:var(--panel);border:1px solid var(--line);border-radius:13px;min-width:0}
-.searchbar span{font-size:19px;color:var(--lime)}
-.searchbar input{width:100%;min-width:0;border:0;outline:0;background:transparent;color:white;font-size:13px}
-kbd{font-size:10px;color:var(--muted);border:1px solid var(--line);padding:3px 6px;border-radius:5px;white-space:nowrap}
-.status{border:1px solid var(--line);border-radius:12px;padding:11px;font-size:11px;color:var(--muted);white-space:nowrap}
-.page{display:none;animation:appear .2s ease}
+button{cursor:pointer}
+a{color:var(--cyan);text-decoration:none}
+a:hover{text-decoration:underline}
+button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{
+  outline:2px solid var(--lime);outline-offset:3px
+}
+.topbar{
+  position:sticky;top:0;z-index:20;display:flex;align-items:center;
+  justify-content:space-between;gap:15px;padding:13px 5%;
+  border-bottom:1px solid #ffffff12;background:#090b12eF;backdrop-filter:blur(18px)
+}
+.brand{display:flex;align-items:center;gap:10px;color:var(--text);font-weight:900;font-size:20px;letter-spacing:-.8px}
+.logo{
+  width:37px;height:37px;display:grid;place-items:center;border-radius:12px;
+  color:#10130a;background:var(--lime);font-weight:1000;font-size:23px;
+  box-shadow:0 0 25px #c9ff5433
+}
+.brand span{color:var(--lime)}
+.top-right{display:flex;align-items:center;gap:10px}
+.xp-pill,.tag{
+  padding:7px 11px;border:1px solid var(--line);border-radius:99px;
+  background:var(--panel);color:var(--muted);font-size:12px;font-weight:750
+}
+.xp-pill strong{color:var(--lime)}
+.layout{display:grid;grid-template-columns:220px minmax(0,1fr);max-width:1550px;margin:auto}
+.sidebar{
+  position:sticky;top:64px;height:calc(100vh - 64px);overflow:auto;
+  padding:23px 15px;border-right:1px solid #ffffff0c
+}
+.nav-label{padding:12px 12px 7px;color:#69738d;font-size:10px;font-weight:900;letter-spacing:1.7px}
+.nav-btn{
+  display:flex;align-items:center;gap:12px;width:100%;margin:3px 0;padding:11px 12px;
+  border:1px solid transparent;border-radius:12px;background:transparent;color:var(--muted);
+  text-align:left;font-weight:700;transition:.18s
+}
+.nav-btn:hover{background:#ffffff08;color:white}
+.nav-btn.active{background:#c9ff5412;border-color:#c9ff5430;color:var(--lime)}
+.nav-icon{width:22px;text-align:center;font-size:17px}
+.sidebar-note{margin:22px 5px;padding:15px;border:1px solid var(--line);border-radius:15px;background:linear-gradient(145deg,#1b2132,#111521)}
+.sidebar-note p{font-size:12px;color:var(--muted)}
+main{min-width:0;padding:30px clamp(16px,3vw,44px) 70px}
+.page{display:none;animation:enter .22s ease}
 .page.active{display:block}
-@keyframes appear{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}
-.eyebrow{font-size:10px;letter-spacing:2px;color:var(--lime);font-weight:800}
-h1{font-size:clamp(35px,5vw,61px);line-height:1.02;letter-spacing:-3px;margin:13px 0}
-h1 em{font-style:normal;color:var(--lime)}
-h2{font-size:24px;letter-spacing:-.9px;margin:0}
-h3{font-size:15px;margin:0 0 8px}
-p{line-height:1.6}
+@keyframes enter{from{opacity:.35;transform:translateY(5px)}to{opacity:1;transform:none}}
+.eyebrow{color:var(--lime);font-size:11px;font-weight:900;letter-spacing:2px;text-transform:uppercase}
+h1{font-size:clamp(32px,5vw,57px);line-height:1.05;letter-spacing:-2.5px;margin:12px 0}
+h2{font-size:25px;letter-spacing:-.8px;margin:0 0 8px}
+h3{margin:0 0 7px;font-size:17px}
+p{color:var(--muted)}
+.hero{position:relative;overflow:hidden;padding:clamp(24px,5vw,48px);border:1px solid #ffffff15;border-radius:26px;
+background:linear-gradient(115deg,#171b2aee,#15172aee 55%,#242044cc)}
+.hero:after{content:"∞";position:absolute;right:3%;top:-55px;font-size:240px;line-height:1;color:#c9ff540b;pointer-events:none}
+.hero p{max-width:590px;font-size:16px}
+.highlight{color:var(--lime)}
+.btn-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.btn{
+  border:1px solid var(--line);border-radius:11px;padding:10px 15px;
+  color:var(--text);background:var(--panel2);font-weight:800;transition:.18s
+}
+.btn:hover{transform:translateY(-2px);border-color:#69738d}
+.btn.primary{background:var(--lime);color:#11150a;border-color:var(--lime)}
+.btn.purple{background:#a58bff;color:#171025;border-color:#a58bff}
+.btn.small{padding:7px 10px;font-size:12px}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.stats,.grid{display:grid;gap:14px;margin:20px 0}
+.stats{grid-template-columns:repeat(4,minmax(0,1fr))}
+.grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.card,.stat{
+  min-width:0;padding:19px;border:1px solid var(--line);border-radius:var(--radius);
+  background:linear-gradient(145deg,#151a28,#10131d);transition:border-color .2s,transform .2s
+}
+.card:hover{border-color:#ffffff38;transform:translateY(-2px)}
+.stat strong{display:block;font-size:25px;letter-spacing:-1px}
+.stat span{font-size:12px;color:var(--muted)}
+.card p{font-size:13px;margin:7px 0 14px}
+.card-icon{font-size:25px;margin-bottom:12px}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin:31px 0 14px}
+.section-head p{margin:3px 0}
 .muted{color:var(--muted)}
-.small{font-size:11px}
-.hero{position:relative;overflow:hidden;padding:clamp(23px,4vw,43px);border:1px solid #3a394e;border-radius:24px;background:radial-gradient(ellipse at 88% 0%,#9b83ff2b,transparent 42%),radial-gradient(ellipse at 70% 100%,#d7ff6815,transparent 40%),#191922}
-.hero-content{position:relative;z-index:1;max-width:700px}
-.hero p{max-width:570px;color:#b9b8c9;font-size:14px}
-.hero-art{position:absolute;right:6%;top:10%;font-size:clamp(90px,15vw,175px);color:var(--purple);opacity:.8;transform:rotate(-12deg)}
-.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:17px}
-.btn{border:1px solid var(--line);border-radius:11px;padding:11px 14px;background:var(--panel2);color:white;font-size:12px;font-weight:800}
-.btn:hover{filter:brightness(1.15);transform:translateY(-1px)}
-.btn.primary{background:var(--lime);color:#171717;border-color:var(--lime)}
-.btn.purple{background:var(--purple);color:#191522;border-color:var(--purple)}
-.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:31px 0 15px}
-.section-head p{font-size:12px;color:var(--muted);margin:5px 0 0}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
-.card{min-width:0;padding:18px;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel)}
-.card.clickable{cursor:pointer;transition:.2s}
-.card.clickable:hover{transform:translateY(-3px);border-color:#66667a}
-.card .icon{font-size:25px;margin-bottom:18px}
-.card p{font-size:12px;color:var(--muted);margin-bottom:0}
-.tint-purple{background:linear-gradient(140deg,#2a243b,var(--panel) 75%)}
-.tint-green{background:linear-gradient(140deg,#253529,var(--panel) 75%)}
-.tint-pink{background:linear-gradient(140deg,#352536,var(--panel) 75%)}
-.tint-blue{background:linear-gradient(140deg,#202f3c,var(--panel) 75%)}
-.page-intro{margin:10px 0 24px}
-.page-intro p{max-width:690px;color:var(--muted);font-size:13px}
-.columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.tool{padding:20px;border:1px solid var(--line);border-radius:17px;background:var(--panel);min-width:0}
-.tool.full{grid-column:1/-1}
-.field{width:100%;padding:11px 12px;border:1px solid #3c3c4e;background:#111119;color:white;border-radius:10px;font-size:13px}
-textarea.field{min-height:120px;resize:vertical;line-height:1.5}
-label{display:block;font-size:11px;color:#c7c5d6;margin:13px 0 7px}
-.result{background:#111119;border:1px dashed #424255;border-radius:11px;padding:13px;margin-top:13px;min-height:45px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
-.tag{display:inline-block;background:#29293a;color:var(--purple);padding:5px 8px;border-radius:99px;font-size:9px;font-weight:800}
-.code-area{width:100%;min-height:250px;background:#101018;color:#d8f4b0;border:1px solid #3a3a4c;border-radius:12px;padding:14px;font:12px/1.6 ui-monospace,SFMono-Regular,Consolas,monospace;resize:vertical}
-iframe.preview{width:100%;height:260px;border:1px solid var(--line);background:white;border-radius:12px}
-.project-card{display:flex;flex-direction:column}
-.project-card .btn{align-self:flex-start;margin-top:15px}
-.project-card .tag{align-self:flex-start;margin-bottom:10px}
-.quiz-option{display:block;width:100%;text-align:left;padding:12px;background:#232330;color:white;border:1px solid #39394a;border-radius:10px;margin-top:8px;font-size:12px}
-.quiz-option:hover{border-color:var(--purple)}
-.quiz-option.good{border-color:#9cdb72;background:#263423}
-.quiz-option.bad{border-color:#ff9fcf;background:#352332}
-.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px}
-.stat{padding:14px;border:1px solid var(--line);background:var(--panel);border-radius:13px}
-.stat strong{display:block;font-size:24px;margin-top:6px}
-.stat span{font-size:10px;color:var(--muted)}
-.resource{display:flex;justify-content:space-between;gap:12px;align-items:center}
-.resource a{color:var(--lime);font-size:11px;font-weight:800;white-space:nowrap}
-.resource p{margin:5px 0 0}
-.pills{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:15px}
-.pill{background:var(--panel);color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:8px 12px;font-size:11px}
-.pill.active{background:var(--lime);color:#161616;border-color:var(--lime)}
-.notice{padding:12px 14px;border:1px solid #484239;border-radius:12px;background:#26231d;color:#e9d7ad;font-size:11px;line-height:1.6;margin-top:14px}
-footer{border-top:1px solid var(--line);margin-top:36px;padding-top:17px;color:#7f7f91;font-size:10px;display:flex;justify-content:space-between;gap:12px}
-.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,15px);opacity:0;pointer-events:none;background:var(--lime);color:#161616;padding:12px 17px;border-radius:10px;font-size:12px;font-weight:800;transition:.2s;z-index:100}
+.small-text{font-size:12px;color:var(--muted)}
+.pill{display:inline-block;padding:4px 8px;border:1px solid var(--line);border-radius:99px;font-size:10px;color:var(--cyan);font-weight:800}
+.progress{height:7px;border-radius:20px;background:#282e40;overflow:hidden;margin:12px 0}
+.progress div{height:100%;background:linear-gradient(90deg,var(--lime),var(--cyan));width:0%;transition:width .3s}
+.toolbar{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin:16px 0}
+.field,.select,textarea{
+  width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:10px;
+  background:#0b0e17;color:var(--text);min-width:0
+}
+.field:focus,textarea:focus{border-color:var(--purple);outline:none}
+.toolbar .field{flex:1;min-width:170px}
+textarea{resize:vertical;line-height:1.6}
+label{display:block;font-size:12px;font-weight:800;color:var(--muted);margin:10px 0 6px}
+.code-area{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:13px;tab-size:2}
+.editor-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.editor-stack{display:grid;gap:10px}
+.editor-box{padding:12px;border:1px solid var(--line);border-radius:14px;background:#0d1019;min-width:0}
+.editor-title{font-size:12px;color:var(--muted);font-weight:850;margin-bottom:8px}
+#preview{width:100%;height:330px;border:1px solid var(--line);border-radius:12px;background:white}
+.quiz-question{font-size:23px;font-weight:850;margin:16px 0}
+.answer-list{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.answer{
+  padding:13px;text-align:left;border:1px solid var(--line);border-radius:12px;
+  background:#171c2b;color:var(--text)
+}
+.answer:hover{border-color:var(--purple)}
+.answer.correct{border-color:#8be58b;background:#163122}
+.answer.wrong{border-color:#ff8794;background:#351a28}
+.feedback{min-height:28px;margin:12px 0;font-weight:750}
+.hidden{display:none!important}
+.tool-output{padding:12px;background:#0b0e17;border:1px solid var(--line);border-radius:10px;overflow-wrap:anywhere}
+.game-number{font-size:43px;font-weight:950;color:var(--lime);letter-spacing:-2px}
+.memory-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:15px 0}
+.memory-tile{aspect-ratio:1;border:1px solid var(--line);border-radius:12px;background:#1b2132;font-size:23px;color:var(--text)}
+.memory-tile.open{background:#2d3150;border-color:var(--purple)}
+.memory-tile.matched{background:#193628;border-color:#7fe0a3}
+.resource-link{display:block;padding:11px 0;border-bottom:1px solid var(--line)}
+footer{padding:25px 0 0;color:#78819a;font-size:12px}
+.toast{
+  position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);opacity:0;
+  padding:12px 18px;border:1px solid #4c586e;border-radius:12px;
+  background:#171c2b;color:white;z-index:99;transition:.2s;pointer-events:none
+}
 .toast.show{opacity:1;transform:translate(-50%,0)}
-@media(max-width:1000px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.layout{grid-template-columns:200px minmax(0,1fr)}.hero-art{opacity:.35}}
-@media(max-width:700px){
- .layout{display:block}aside{display:none}main{padding:14px 13px 30px}
- header{gap:8px}.mobile-logo{display:block}.status,kbd{display:none}
- .searchbar{padding:11px}.hero-art{right:-15px;opacity:.22}
- .grid,.columns{grid-template-columns:1fr}.tool.full{grid-column:auto}
- h1{letter-spacing:-2px}.stat-row{gap:7px}.stat{padding:10px}.stat strong{font-size:20px}
- .resource{align-items:flex-start;flex-direction:column}
- footer{flex-direction:column}
+.mobile-nav{display:none}
+@media(max-width:950px){
+ .layout{grid-template-columns:1fr}.sidebar{display:none}
+ .mobile-nav{display:flex;position:sticky;top:62px;z-index:19;overflow-x:auto;gap:6px;
+ padding:9px 12px;background:#0b0d16ed;border-bottom:1px solid var(--line)}
+ .mobile-nav .nav-btn{width:auto;white-space:nowrap;padding:9px 11px;margin:0}
+ main{padding-top:20px}
+}
+@media(max-width:650px){
+ .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .grid,.grid.two{grid-template-columns:1fr}
+ .editor-grid{grid-template-columns:1fr}
+ .answer-list{grid-template-columns:1fr}
+ .hero:after{font-size:150px;top:-15px}
+ .topbar{padding:10px 13px}.brand{font-size:17px}
+ h1{letter-spacing:-1.5px}
+ #preview{height:260px}
 }
 </style>
 </head>
+
 <body>
+<header class="topbar">
+  <a class="brand" href="#" onclick="navigate('home');return false">
+    <span class="logo">∞</span> VYBE <span>INFINITY</span>
+  </a>
+  <div class="top-right">
+    <span class="xp-pill">⚡ <strong id="xpTop">0</strong> XP</span>
+    <button class="btn small" onclick="navigate('tools')">Quick tools ↗</button>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav"></div>
 <div class="layout">
-<aside>
-  <a class="logo" href="#" data-page="home"><span class="logo-icon">∞</span> VYBE<b>∞</b></a>
-  <div><div class="nav-label">EXPLORE</div><nav id="sideNav">
-    <button class="active" data-page="home">⌂ &nbsp; Discover</button>
-    <button data-page="learn">▤ &nbsp; Learn & Code</button>
-    <button data-page="projects">▦ &nbsp; Project Galaxy</button>
-    <button data-page="quiz">⚡ &nbsp; Quiz Arena</button>
-    <button data-page="games">♟ &nbsp; Mind Games</button>
-    <button data-page="tools">⌘ &nbsp; Digital Tools</button>
-    <button data-page="resources">↗ &nbsp; Resource Hub</button>
-  </nav></div>
-  <div class="sidebar-note"><strong>∞ Keep exploring.</strong><br>Learn a skill. Build a project. Challenge your brain.<br><br>Free to use. No account needed.</div>
+<aside class="sidebar">
+  <div class="nav-label">YOUR UNIVERSE</div>
+  <div id="desktopNav"></div>
+  <div class="sidebar-note">
+    <span class="pill">YOUR NEXT LEVEL</span>
+    <h3 style="margin-top:12px">Build something real.</h3>
+    <p>One new skill today is better than ten saved tutorials.</p>
+    <button class="btn small primary" onclick="navigate('lab')">Open coding lab ↗</button>
+  </div>
 </aside>
 
 <main>
-<header>
-  <div class="mobile-logo">VYBE∞</div>
-  <div class="searchbar"><span>⌕</span><input id="search" placeholder="Search coding, projects, quizzes, tools..." aria-label="Search all sections"><kbd>SEARCH</kbd></div>
-  <div class="status">⚡ <b id="xp">0</b> XP</div>
-</header>
-
-<!-- DISCOVER -->
 <section class="page active" id="page-home">
-  <div class="hero"><div class="hero-content">
-    <div class="eyebrow">A DIGITAL UNIVERSE FOR CURIOUS MINDS</div>
-    <h1>Think bigger.<br>Build <em>anything.</em></h1>
-    <p>Explore code, create real projects, challenge your brain and discover skills for the future. Your next idea starts here.</p>
-    <div class="actions"><button class="btn primary" data-page="projects">Explore projects ↗</button><button class="btn" data-page="quiz">Enter Quiz Arena ⚡</button></div>
-  </div><div class="hero-art" aria-hidden="true">∞</div></div>
-  <div class="stat-row"><div class="stat"><span>YOUR XP</span><strong id="homeXP">0</strong></div><div class="stat"><span>QUIZ QUESTIONS</span><strong>∞</strong></div><div class="stat"><span>PROJECT IDEAS</span><strong id="projectCount">0</strong></div></div>
-  <div class="section-head"><div><h2>Pick your universe</h2><p>Different paths. One place to explore.</p></div></div>
-  <div class="grid">
-    <div class="card clickable tint-purple" data-page="learn"><div class="icon">💻</div><h3>Learn & Code</h3><p>HTML, CSS, JavaScript, Python and Java learning guides.</p></div>
-    <div class="card clickable tint-green" data-page="projects"><div class="icon">🛠️</div><h3>Project Galaxy</h3><p>Useful projects with source code, explanations and live previews.</p></div>
-    <div class="card clickable tint-pink" data-page="quiz"><div class="icon">🧠</div><h3>Quiz Arena</h3><p>Fresh generated questions, quick answers and XP.</p></div>
-    <div class="card clickable" data-page="games"><div class="icon">🎮</div><h3>Mind Games</h3><p>Number puzzles, memory challenges and logic games.</p></div>
-    <div class="card clickable tint-blue" data-page="tools"><div class="icon">⚙️</div><h3>Digital Tools</h3><p>Calculators, text utilities, password ideas and QR codes.</p></div>
-    <div class="card clickable" data-page="resources"><div class="icon">🌐</div><h3>Resource Hub</h3><p>Hand-picked free learning websites and developer references.</p></div>
+  <div class="hero">
+    <div class="eyebrow">Your internet playground</div>
+    <h1>Don't just scroll.<br><span class="highlight">Create your world.</span></h1>
+    <p>Learn to code, build real mini-projects, challenge your brain and discover useful tools — all in one free space.</p>
+    <div class="btn-row">
+      <button class="btn primary" onclick="navigate('lab')">⌘ Start building</button>
+      <button class="btn" onclick="navigate('quiz')">⚡ Challenge yourself</button>
+      <button class="btn" onclick="navigate('games')">🎮 Play a game</button>
+    </div>
   </div>
-  <div class="section-head"><div><h2>Start with one small win</h2><p>Make something instead of only scrolling.</p></div></div>
-  <div class="card tint-green"><span class="tag">TODAY'S IDEA</span><h3 style="margin-top:12px">Build a website that solves one real problem.</h3><p>Maybe a homework planner, a marks calculator, a quiz, or a simple personal portfolio. Start small and improve it.</p><button class="btn primary" data-page="projects" style="margin-top:12px">Find a project ↗</button></div>
+
+  <div class="stats">
+    <div class="stat"><span>Total XP</span><strong id="xpStat">0</strong><span>Earn as you explore</span></div>
+    <div class="stat"><span>Quizzes answered</span><strong id="answeredStat">0</strong><span>Keep learning</span></div>
+    <div class="stat"><span>Correct answers</span><strong id="correctStat">0</strong><span id="accuracyStat">0% accuracy</span></div>
+    <div class="stat"><span>Projects explored</span><strong id="projectsStat">0</strong><span>Make ideas real</span></div>
+  </div>
+
+  <div class="section-head"><div><h2>Pick your next adventure</h2><p>Every section has something you can actually use.</p></div></div>
+  <div class="grid">
+    <article class="card"><div class="card-icon">⌨️</div><h3>Code Studio</h3><p>Write HTML, CSS and JavaScript and see the result instantly.</p><button class="btn small" onclick="navigate('lab')">Open studio →</button></article>
+    <article class="card"><div class="card-icon">🪐</div><h3>Project Galaxy</h3><p>Explore ready-to-run projects and learn how their code works.</p><button class="btn small" onclick="navigate('projects')">Explore projects →</button></article>
+    <article class="card"><div class="card-icon">🧠</div><h3>Quiz Arena</h3><p>Practice maths with generated questions and test other skills.</p><button class="btn small" onclick="navigate('quiz')">Enter arena →</button></article>
+    <article class="card"><div class="card-icon">🎮</div><h3>Mind Games</h3><p>Play a memory game, number challenge and rock-paper-scissors.</p><button class="btn small" onclick="navigate('games')">Play now →</button></article>
+    <article class="card"><div class="card-icon">🧰</div><h3>Digital Toolbox</h3><p>Calculate percentages, count text and transform words.</p><button class="btn small" onclick="navigate('tools')">Use tools →</button></article>
+    <article class="card"><div class="card-icon">🌐</div><h3>Resource Universe</h3><p>Find reputable documentation and free learning websites.</p><button class="btn small" onclick="navigate('resources')">Discover →</button></article>
+  </div>
+  <div class="section-head"><div><h2>Today's mission</h2><p>A small challenge you can finish now.</p></div></div>
+  <div class="card">
+    <span class="pill">MISSION 01</span>
+    <h3 style="margin-top:12px">Build your first interactive button</h3>
+    <p>Open Code Studio, change the sample text, and make a button that responds to a click. You don't need an account or a server.</p>
+    <button class="btn primary" onclick="loadStarter()">Load starter project ↗</button>
+  </div>
 </section>
 
-<!-- LEARN -->
-<section class="page" id="page-learn">
- <div class="page-intro"><div class="eyebrow">LEARN BY BUILDING</div><h1>Learn & <em>Code.</em></h1><p>Choose a language, understand what it is useful for, and start with a small example.</p></div>
- <div class="pills" id="languagePills">
-  <button class="pill active" data-lang="html">HTML</button><button class="pill" data-lang="css">CSS</button><button class="pill" data-lang="javascript">JavaScript</button><button class="pill" data-lang="python">Python</button><button class="pill" data-lang="java">Java</button>
- </div>
- <div class="tool" id="languageInfo"></div>
- <div class="section-head"><div><h2>Web playground</h2><p>Edit HTML and run it in a preview. Your code stays in this browser.</p></div></div>
- <div class="columns">
-  <div class="tool"><h3>HTML / CSS / JavaScript</h3><textarea class="code-area" id="editor" spellcheck="false"><!DOCTYPE html>
-<html>
-<head>
-<style>
-body { font-family: sans-serif; padding: 24px; background: #f0f4ff; }
-h1 { color: #6546e8; }
-button { padding: 10px 15px; border: 0; border-radius: 8px; background: #6546e8; color: white; }
-</style>
-</head>
-<body>
-<h1>Hello, builder! ✨</h1>
-<p>You just made a webpage.</p>
-<button onclick="document.querySelector('p').textContent='You made it work!'">Click me</button>
-</body>
-</html></textarea><div class="actions"><button class="btn primary" id="runCode">▶ Run code</button><button class="btn" id="resetCode">Reset example</button></div></div>
-  <div class="tool"><h3>Live preview</h3><iframe class="preview" id="preview" title="Code playground preview" sandbox="allow-scripts"></iframe><p class="small muted">Only run code you understand. This preview is sandboxed; external sites may not work inside it.</p></div>
- </div>
- <div class="notice">Python and Java examples are shown as source code and are not executed in this browser playground. You can practise them using the official learning resources below.</div>
- <div class="section-head"><div><h2>Language quick links</h2><p>Official documentation and beginner learning resources.</p></div></div>
- <div class="grid" id="languageLinks"></div>
+<section class="page" id="page-lab">
+  <div class="eyebrow">Create • Test • Improve</div><h1>Code <span class="highlight">Studio.</span></h1>
+  <p>Write code and preview it in an isolated browser frame. Your draft is saved on this device.</p>
+  <div class="toolbar">
+    <button class="btn primary" onclick="runCode()">▶ Run code</button>
+    <button class="btn" onclick="saveDraft()">Save draft</button>
+    <button class="btn" onclick="resetEditor()">Reset</button>
+    <button class="btn" onclick="downloadProject()">Download HTML</button>
+  </div>
+  <div class="editor-grid">
+    <div class="editor-stack">
+      <div class="editor-box"><div class="editor-title">01 / HTML</div><textarea id="htmlCode" class="code-area" rows="9" spellcheck="false"></textarea></div>
+      <div class="editor-box"><div class="editor-title">02 / CSS</div><textarea id="cssCode" class="code-area" rows="8" spellcheck="false"></textarea></div>
+      <div class="editor-box"><div class="editor-title">03 / JAVASCRIPT</div><textarea id="jsCode" class="code-area" rows="8" spellcheck="false"></textarea></div>
+    </div>
+    <div class="editor-box">
+      <div class="editor-title">LIVE PREVIEW · Runs in your browser</div>
+      <iframe id="preview" title="Code preview" sandbox="allow-scripts"></iframe>
+      <p class="small-text">The preview is sandboxed. Never paste code from strangers unless you understand it. This lab does not run Python or Java.</p>
+    </div>
+  </div>
 </section>
 
-<!-- PROJECTS -->
 <section class="page" id="page-projects">
- <div class="page-intro"><div class="eyebrow">IDEAS INTO REAL THINGS</div><h1>Project <em>Galaxy.</em></h1><p>Explore starter projects. Each card explains the purpose, difficulty and skills you can practise.</p></div>
- <input class="field" id="projectSearch" placeholder="Search projects by name or skill...">
- <div class="pills" id="projectFilters" style="margin-top:13px">
- <button class="pill active" data-category="all">All projects</button><button class="pill" data-category="beginner">Beginner</button><button class="pill" data-category="web">Web apps</button><button class="pill" data-category="games">Games</button><button class="pill" data-category="useful">Useful tools</button>
- </div>
- <div class="grid" id="projectGrid"></div>
- <div class="tool" id="projectDetail" style="display:none;margin-top:15px"></div>
+  <div class="eyebrow">Make something that exists</div><h1>Project <span class="highlight">Galaxy.</span></h1>
+  <p>Choose a project, inspect the idea, and load its code into Code Studio.</p>
+  <div class="toolbar">
+    <input class="field" id="projectSearch" placeholder="Search projects..." oninput="renderProjects()">
+    <select class="select" id="projectFilter" style="width:auto" onchange="renderProjects()">
+      <option value="all">All projects</option><option value="game">Games</option><option value="tool">Tools</option><option value="web">Websites</option>
+    </select>
+  </div>
+  <div class="grid" id="projectGrid"></div>
+  <div id="projectDetail" class="card hidden"></div>
 </section>
 
-<!-- QUIZ -->
 <section class="page" id="page-quiz">
- <div class="page-intro"><div class="eyebrow">TEST YOUR THINKING</div><h1>Quiz <em>Arena.</em></h1><p>Questions are generated from templates and random values, so the number combinations can keep changing. Learn from the explanation after every answer.</p></div>
- <div class="columns">
-  <div class="tool"><span class="tag" id="quizTopic">MATHS</span><h3 id="question" style="font-size:21px;line-height:1.5;margin-top:15px">Loading question…</h3><div id="answers"></div><div class="result" id="explanation">Choose an answer to check your reasoning.</div><div class="actions"><button class="btn primary" id="nextQuiz">New question ↻</button></div></div>
-  <div class="tool"><h3>Choose your challenge</h3><p class="muted small">Switch categories for a different kind of question.</p><div class="pills" id="quizCategories"><button class="pill active" data-topic="math">Maths</button><button class="pill" data-topic="logic">Logic</button><button class="pill" data-topic="web">Web & coding</button><button class="pill" data-topic="safety">Internet safety</button><button class="pill" data-topic="science">Science</button></div><div class="stat-row"><div class="stat"><span>XP</span><strong id="quizXP">0</strong></div><div class="stat"><span>STREAK</span><strong id="streak">0</strong></div><div class="stat"><span>ANSWERED</span><strong id="answered">0</strong></div></div><p class="small muted">Questions can be generated from number templates, but this is not literally infinite unique knowledge. More verified question banks can be added later.</p></div>
- </div>
+  <div class="eyebrow">Think • Answer • Level up</div><h1>Quiz <span class="highlight">Arena.</span></h1>
+  <p>Maths questions are generated with changing values. Other topics use a growing question bank.</p>
+  <div class="card">
+    <div class="toolbar">
+      <select class="select" id="quizCategory" style="max-width:230px" onchange="newQuestion()">
+        <option value="math">Maths generator</option><option value="web">Web development</option>
+        <option value="science">Science</option><option value="logic">Logic</option><option value="safety">Digital safety</option>
+      </select>
+      <span class="pill" id="quizCount">Question 1</span><span class="pill" id="quizScore">Score: 0</span>
+    </div>
+    <div id="question" class="quiz-question">Ready for a challenge?</div>
+    <div id="answers" class="answer-list"></div>
+    <div id="feedback" class="feedback" aria-live="polite"></div>
+    <button id="nextQuestion" class="btn primary" onclick="newQuestion()">Next question →</button>
+  </div>
 </section>
 
-<!-- GAMES -->
 <section class="page" id="page-games">
- <div class="page-intro"><div class="eyebrow">PLAY SMART</div><h1>Mind <em>Games.</em></h1><p>Quick brain breaks with randomized rounds. Start a new round to get a new challenge.</p></div>
- <div class="columns">
-  <div class="tool"><div class="icon">🔢</div><h3>Number mystery</h3><p class="muted small">Guess a number from 1 to 100. Each new round chooses a new secret number.</p><div class="result" id="guessMessage">I'm thinking of a number. Can you find it?</div><label for="guessInput">Your guess</label><input class="field" id="guessInput" type="number" min="1" max="100" placeholder="1–100"><div class="actions"><button class="btn primary" id="submitGuess">Guess</button><button class="btn" id="newGuess">New round</button></div><p class="small muted" id="guessCount">Guesses: 0</p></div>
-  <div class="tool"><div class="icon">🧩</div><h3>Sequence solver</h3><p class="muted small">Find the next number in the pattern.</p><div class="result" id="sequenceQuestion" style="font-size:19px;font-weight:800">2, 4, 6, 8, ?</div><label for="sequenceAnswer">Next number</label><input class="field" id="sequenceAnswer" type="number" placeholder="Your answer"><div class="actions"><button class="btn primary" id="checkSequence">Check answer</button><button class="btn" id="newSequence">New puzzle</button></div><div class="result" id="sequenceResult">Look for a pattern in the differences.</div></div>
-  <div class="tool"><div class="icon">🧠</div><h3>Memory challenge</h3><p class="muted small">Remember the sequence of numbers and type it back.</p><div class="result" id="memoryDisplay">Press Start to reveal a sequence.</div><div class="actions"><button class="btn primary" id="startMemory">Start</button></div><label for="memoryAnswer">Type the sequence with spaces</label><input class="field" id="memoryAnswer" placeholder="e.g. 4 8 2"><div class="actions"><button class="btn" id="checkMemory">Check</button></div><div class="result" id="memoryResult"></div></div>
-  <div class="tool"><div class="icon">✊</div><h3>Rock, paper, scissors</h3><p class="muted small">A quick round against the computer.</p><div class="actions" id="rpsButtons"><button class="btn" data-rps="rock">✊ Rock</button><button class="btn" data-rps="paper">✋ Paper</button><button class="btn" data-rps="scissors">✌️ Scissors</button></div><div class="result" id="rpsResult">Choose your move.</div></div>
- </div>
+  <div class="eyebrow">Give your brain a workout</div><h1>Mind <span class="highlight">Games.</span></h1>
+  <div class="grid two">
+    <div class="card">
+      <div class="card-icon">🔢</div><h3>Number Hunter</h3>
+      <p>Find the secret number between 1 and 100.</p>
+      <div class="game-number">?</div>
+      <div class="toolbar"><input class="field" id="guessInput" type="number" min="1" max="100" placeholder="Enter 1–100"><button class="btn primary" onclick="guessNumber()">Guess</button></div>
+      <div id="guessFeedback" class="feedback" aria-live="polite">You have 7 attempts.</div>
+      <button class="btn small" onclick="startGuess()">New number</button>
+    </div>
+    <div class="card">
+      <div class="card-icon">🧠</div><h3>Memory Matrix</h3>
+      <p>Find matching pairs. Fewer moves are better.</p>
+      <div class="toolbar"><span class="pill" id="memoryMoves">Moves: 0</span><span class="pill" id="memoryPairs">Pairs: 0/8</span><button class="btn small" onclick="startMemory()">Restart</button></div>
+      <div id="memoryGrid" class="memory-grid"></div>
+      <div id="memoryFeedback" class="small-text" aria-live="polite">Tap two tiles to find a pair.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">✊</div><h3>Rock Paper Scissors</h3><p>Play against the computer. First to five wins the round.</p>
+      <div class="toolbar">
+        <button class="btn" onclick="playRPS('rock')">✊ Rock</button>
+        <button class="btn" onclick="playRPS('paper')">✋ Paper</button>
+        <button class="btn" onclick="playRPS('scissors')">✌️ Scissors</button>
+      </div>
+      <div id="rpsResult" class="tool-output">Make your move.</div><p id="rpsScore">You 0 — 0 Computer</p>
+      <button class="btn small" onclick="resetRPS()">Reset score</button>
+    </div>
+    <div class="card">
+      <div class="card-icon">⚡</div><h3>Reaction Test</h3><p>Wait until the panel turns green, then click as quickly as you can.</p>
+      <button class="btn primary" id="reactionBtn" onclick="reactionAction()">Start test</button>
+      <div id="reactionResult" class="game-number" style="font-size:28px;margin-top:15px">Ready?</div>
+      <p class="small-text">Don't click early. Your best time is saved on this device.</p>
+    </div>
+  </div>
 </section>
 
-<!-- TOOLS -->
 <section class="page" id="page-tools">
- <div class="page-intro"><div class="eyebrow">USEFUL EVERY DAY</div><h1>Digital <em>Tools.</em></h1><p>Small utilities for writing, calculations and creating. Your input stays in your browser unless you choose to share it yourself.</p></div>
- <div class="columns">
-  <div class="tool"><h3>Percentage calculator</h3><label for="pct">Percentage (%)</label><input class="field" id="pct" type="number" placeholder="e.g. 20"><label for="base">Number</label><input class="field" id="base" type="number" placeholder="e.g. 500"><button class="btn primary" id="calcPct" style="margin-top:12px">Calculate</button><div class="result" id="pctResult">Your result will appear here.</div></div>
-  <div class="tool"><h3>Word & character counter</h3><label for="counterText">Enter your text</label><textarea class="field" id="counterText" placeholder="Start typing…" style="min-height:130px"></textarea><div class="stat-row"><div class="stat"><span>WORDS</span><strong id="words">0</strong></div><div class="stat"><span>CHARACTERS</span><strong id="chars">0</strong></div><div class="stat"><span>READ TIME</span><strong id="read">0m</strong></div></div></div>
-  <div class="tool"><h3>Text transformer</h3><label for="transformText">Text to transform</label><textarea class="field" id="transformText" placeholder="Type something…"></textarea><div class="actions"><button class="btn" data-transform="upper">UPPERCASE</button><button class="btn" data-transform="lower">lowercase</button><button class="btn" data-transform="title">Title Case</button></div><div class="actions"><button class="btn primary" id="copyTransformed">Copy text</button></div></div>
-  <div class="tool"><h3>Password phrase idea</h3><p class="muted small">Creates a random passphrase locally. Use a unique password for each account.</p><button class="btn primary" id="makePassword">Generate phrase</button><div class="result" id="passwordResult">Your passphrase idea appears here.</div><button class="btn" id="copyPassword" style="margin-top:10px">Copy phrase</button><div class="notice">Never share passwords with anyone. For important accounts, a reputable password manager is safer than reusing generated examples.</div></div>
- </div>
+  <div class="eyebrow">Useful things, right now</div><h1>Digital <span class="highlight">Toolbox.</span></h1>
+  <div class="grid two">
+    <div class="card"><h3>🧮 Percentage calculator</h3><p>Find X% of a number.</p>
+      <label for="percent">Percentage</label><input class="field" id="percent" type="number" placeholder="e.g. 20">
+      <label for="baseNumber">Number</label><input class="field" id="baseNumber" type="number" placeholder="e.g. 500">
+      <button class="btn primary" style="margin-top:12px" onclick="calcPercent()">Calculate</button>
+      <div class="tool-output" id="percentResult" style="margin-top:12px">Result appears here.</div>
+    </div>
+    <div class="card"><h3>📝 Word & character counter</h3><p>Count words, characters and estimated reading time.</p>
+      <textarea id="wordText" rows="6" placeholder="Paste or type your text..." oninput="countWords()"></textarea>
+      <div class="grid two" style="margin-bottom:0">
+        <div class="tool-output"><strong id="wordCount">0</strong><br><span class="small-text">Words</span></div>
+        <div class="tool-output"><strong id="charCount">0</strong><br><span class="small-text">Characters</span></div>
+      </div><p id="readTime" class="small-text">Estimated reading time: 0 min</p>
+    </div>
+    <div class="card"><h3>🔤 Text transformer</h3><p>Change text case or reverse a string.</p>
+      <textarea id="transformInput" rows="4" placeholder="Enter text to transform..."></textarea>
+      <div class="toolbar">
+        <button class="btn small" onclick="transformText('upper')">UPPERCASE</button><button class="btn small" onclick="transformText('lower')">lowercase</button>
+        <button class="btn small" onclick="transformText('title')">Title Case</button><button class="btn small" onclick="transformText('reverse')">Reverse</button>
+      </div>
+      <textarea id="transformOutput" rows="3" placeholder="Output appears here..." readonly></textarea>
+      <button class="btn small" style="margin-top:8px" onclick="copyText('transformOutput')">Copy output</button>
+    </div>
+    <div class="card"><h3>🔄 Unit converter</h3><p>Convert common length units.</p>
+      <label for="unitValue">Value</label><input id="unitValue" class="field" type="number" value="1">
+      <div class="toolbar">
+        <select id="unitFrom" class="select"><option value="m">Metres</option><option value="km">Kilometres</option><option value="cm">Centimetres</option><option value="mi">Miles</option></select>
+        <span>→</span>
+        <select id="unitTo" class="select"><option value="km">Kilometres</option><option value="m">Metres</option><option value="cm">Centimetres</option><option value="mi">Miles</option></select>
+      </div>
+      <button class="btn primary" onclick="convertUnits()">Convert</button><div class="tool-output" id="unitResult" style="margin-top:12px">1 m = 0.001 km</div>
+    </div>
+  </div>
 </section>
 
-<!-- RESOURCES -->
 <section class="page" id="page-resources">
- <div class="page-intro"><div class="eyebrow">THE INTERNET IS YOUR LIBRARY</div><h1>Resource <em>Hub.</em></h1><p>Useful external websites for learning and building. These links open the official or widely used resource in a new tab.</p></div>
- <input class="field" id="resourceSearch" placeholder="Find a resource..." style="margin-bottom:15px">
- <div class="grid" id="resourceGrid"></div>
- <div class="notice">External links lead to third-party sites. Review their privacy policies and terms. VYBE does not control their content or availability.</div>
+  <div class="eyebrow">Learn from trusted sources</div><h1>Resource <span class="highlight">Universe.</span></h1>
+  <p>These resources open their official websites in a new tab.</p>
+  <input class="field" id="resourceSearch" placeholder="Find a learning resource..." oninput="filterResources()">
+  <div class="grid" id="resourceGrid"></div>
 </section>
-<footer><span>VYBE INFINITY · A growing learning playground</span><span>Free starter version · No login · Progress saved on this device</span></footer>
+
+<footer>
+  <div class="section-head"><div><h3>VYBE INFINITY ∞</h3><p>Learn something. Build something. Repeat.</p></div></div>
+  <p>This website runs in your browser. Progress is stored locally on this device. It is not an online account or cloud backup.</p>
+  <p>Made for learning. Verify code before using it in real projects. No paid API required.</p>
+</footer>
 </main>
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
 "use strict";
-const $=id=>document.getElementById(id);
-const get=(k,d)=>{try{const v=localStorage.getItem(k);return v===null?d:JSON.parse(v)}catch{return d}};
-const put=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch{}};
-let xp=get("vybeInfinityXP",0),topic="math",streak=0,answered=0;
-function toast(s){const t=$("toast");t.textContent=s;t.classList.add("show");clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.remove("show"),2000)}
-function award(n){xp+=n;put("vybeInfinityXP",xp);$("xp").textContent=xp;$("homeXP").textContent=xp;$("quizXP").textContent=xp;toast("+"+n+" XP earned!")}
-function page(n){if(!$("page-"+n))return;document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));$("page-"+n).classList.add("active");document.querySelectorAll("[data-page]").forEach(x=>x.classList.toggle("active",x.dataset.page===n));window.scrollTo({top:0,behavior:"smooth"})}
-document.querySelectorAll("[data-page]").forEach(x=>x.addEventListener("click",e=>{e.preventDefault();page(x.dataset.page)}));
-$("xp").textContent=xp;$("homeXP").textContent=xp;$("quizXP").textContent=xp;
 
-const languageData={
- html:{title:"HTML — structure the web",desc:"HTML gives a webpage its structure: headings, paragraphs, forms, links and more.",code:'<h1>Hello, world!</h1>\\n<p>This is my first page.</p>',link:"https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content"},
- css:{title:"CSS — design the web",desc:"CSS controls colours, spacing, layouts, responsive design and visual effects.",code:"h1 { color: rebeccapurple; }\\n.card { border-radius: 16px; padding: 20px; }",link:"https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics"},
- javascript:{title:"JavaScript — make things interactive",desc:"JavaScript adds logic, events, calculations, dynamic interfaces and browser-based applications.",code:'const button = document.querySelector("button");\\nbutton.addEventListener("click", () => {\\n  alert("It works!");\\n});',link:"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide"},
- python:{title:"Python — automate and explore",desc:"Python is used for automation, data, beginner programming, web backends and AI projects.",code:'name = input("Your name: ")\\nprint("Welcome,", name)',link:"https://docs.python.org/3/tutorial/"},
- java:{title:"Java — build structured applications",desc:"Java is used in backend systems, enterprise software, Android-related development and many educational programming courses.",code:'public class Main {\\n  public static void main(String[] args) {\\n    System.out.println("Hello, world!");\\n  }\\n}',link:"https://dev.java/learn/"}
-};
-function showLanguage(k){
- document.querySelectorAll("[data-lang]").forEach(b=>b.classList.toggle("active",b.dataset.lang===k));
- const d=languageData[k];$("languageInfo").innerHTML="";
- const tag=document.createElement("span");tag.className="tag";tag.textContent=k.toUpperCase();
- const h=document.createElement("h3");h.style.marginTop="12px";h.textContent=d.title;
- const p=document.createElement("p");p.className="muted small";p.textContent=d.desc;
- const pre=document.createElement("pre");pre.style.cssText="overflow:auto;background:#111119;border-radius:10px;padding:14px;color:#d7ff68;font-size:12px;line-height:1.6";pre.textContent=d.code;
- const a=document.createElement("a");a.href=d.link;a.target="_blank";a.rel="noopener noreferrer";a.className="btn primary";a.style.display="inline-block";a.style.marginTop="10px";a.textContent="Open learning guide ↗";
- $("languageInfo").append(tag,h,p,pre,a);
+/* -------------------- NAVIGATION & LOCAL PROGRESS -------------------- */
+const navItems=[
+ ["home","⌂","Discover"],["lab","⌘","Code Studio"],["projects","◈","Project Galaxy"],
+ ["quiz","⚡","Quiz Arena"],["games","🎮","Mind Games"],["tools","▦","Digital Toolbox"],["resources","◎","Resources"]
+];
+let currentPage="home";
+let data={xp:0,answered:0,correct:0,projects:[],bestReaction:null};
+try{data={...data,...JSON.parse(localStorage.getItem("vybeProgress")||"{}")}}catch(e){}
+function persist(){try{localStorage.setItem("vybeProgress",JSON.stringify(data))}catch(e){};updateStats()}
+function updateStats(){
+ document.getElementById("xpTop").textContent=data.xp;
+ document.getElementById("xpStat").textContent=data.xp;
+ document.getElementById("answeredStat").textContent=data.answered;
+ document.getElementById("correctStat").textContent=data.correct;
+ document.getElementById("accuracyStat").textContent=(data.answered?Math.round(data.correct/data.answered*100):0)+"% accuracy";
+ document.getElementById("projectsStat").textContent=data.projects.length;
 }
-document.querySelectorAll("[data-lang]").forEach(b=>b.addEventListener("click",()=>showLanguage(b.dataset.lang)));
-showLanguage("html");
-const docs=[
-["HTML","Markup and webpage structure","https://developer.mozilla.org/en-US/docs/Web/HTML"],
-["CSS","Layouts, design and responsive styling","https://developer.mozilla.org/en-US/docs/Web/CSS"],
-["JavaScript","Interactive web applications","https://developer.mozilla.org/en-US/docs/Web/JavaScript"],
-["Python","Official Python tutorial","https://docs.python.org/3/tutorial/"],
-["Java","Learn Java with dev.java","https://dev.java/learn/"],
-["GitHub","Host projects and learn version control","https://github.com/"],
-["freeCodeCamp","Free interactive coding courses","https://www.freecodecamp.org/"],
-["Khan Academy","Maths, science and computing lessons","https://www.khanacademy.org/"],
-["Code.org","Beginner-friendly computer science activities","https://code.org/"],
-["Scratch","Create animations, stories and games","https://scratch.mit.edu/"]
-];
-$("languageLinks").innerHTML="";
-docs.slice(0,5).forEach(d=>{const el=document.createElement("div");el.className="card";el.innerHTML="";const h=document.createElement("h3");h.textContent=d[0];const p=document.createElement("p");p.textContent=d[1];const a=document.createElement("a");a.href=d[2];a.target="_blank";a.rel="noopener noreferrer";a.className="btn";a.style.display="inline-block";a.style.marginTop="12px";a.textContent="Open resource ↗";el.append(h,p,a);$("languageLinks").append(el)});
+function buildNav(){
+ const html=navItems.map(([id,icon,name])=>`<button class="nav-btn ${id===currentPage?"active":""}" data-page="${id}" onclick="navigate('${id}')"><span class="nav-icon">${icon}</span>${name}</button>`).join("");
+ document.getElementById("desktopNav").innerHTML=html;
+ document.getElementById("mobileNav").innerHTML=html;
+}
+function navigate(id){
+ currentPage=id;
+ document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id==="page-"+id));
+ buildNav();window.scrollTo({top:0,behavior:"smooth"});
+ if(id==="lab"&&!document.getElementById("htmlCode").value)resetEditor();
+}
+function earnXP(n){data.xp+=n;persist();toast("+"+n+" XP earned! ⚡")}
+let toastTimer;
+function toast(message){
+ const el=document.getElementById("toast");el.textContent=message;el.classList.add("show");
+ clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove("show"),2200);
+}
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 
-const projectData=[
-{id:"calculator",title:"Smart calculator",icon:"🧮",category:"useful",level:"BEGINNER",desc:"Calculate expressions and practise JavaScript events.",why:"Useful for learning input validation, event handling and basic maths.",skills:"HTML · CSS · JavaScript",code:'<h2>Quick calculator</h2>\\n<input id="a" type="number" placeholder="First number">\\n<input id="b" type="number" placeholder="Second number">\\n<button onclick="out.textContent=Number(a.value)+Number(b.value)">Add</button>\\n<p id="out">Result</p>'},
-{id:"quiz",title:"Mini quiz app",icon:"🧠",category:"web",level:"BEGINNER",desc:"Make a quiz that checks answers and shows explanations.",why:"Practises arrays, conditions, score tracking and user feedback.",skills:"HTML · CSS · JavaScript",code:'<h2>Quick quiz</h2>\\n<p>What does HTML structure?</p>\\n<button onclick="result.textContent=\\'Correct!\\'">Web pages</button>\\n<button onclick="result.textContent=\\'Try again!\\'">Databases only</button>\\n<p id="result"></p>'},
-{id:"portfolio",title:"Personal portfolio",icon:"🪪",category:"web",level:"BEGINNER",desc:"Create a page that presents your skills and projects.",why:"A portfolio helps you document what you build and learn.",skills:"HTML · CSS",code:'<h1>Hi, I am a learner.</h1>\\n<p>I enjoy making useful digital projects.</p>\\n<h2>My projects</h2>\\n<ul><li>My first website</li><li>A quiz app</li></ul>'},
-{id:"timer",title:"Focus timer",icon:"⏱️",category:"useful",level:"BEGINNER",desc:"Build a countdown timer for study sessions or creative work.",why:"Practises timing, UI updates and simple state management.",skills:"JavaScript · DOM",code:'<h2>Focus session</h2>\\n<button onclick="start()">Start 1 minute</button>\\n<p id="clock">60 seconds</p>\\n<script>let t;function start(){clearInterval(t);let n=60;clock.textContent=n+" seconds";t=setInterval(()=>{n--;clock.textContent=n+" seconds";if(n<=0){clearInterval(t);clock.textContent="Done!"}},1000)}<\\/script>'},
-{id:"memory",title:"Memory card game",icon:"🃏",category:"games",level:"BEGINNER",desc:"Reveal pairs and remember where each symbol is located.",why:"Practises arrays, randomisation, state and game logic.",skills:"JavaScript · Arrays",code:'<h2>Memory game idea</h2>\\n<p>Make a grid of hidden symbols. Reveal two cards at a time and check if they match.</p>\\n<button onclick="this.textContent=this.textContent===\\'⭐\\'?\\'🎲\\':\\'⭐\\'">Reveal a card</button>'},
-{id:"random",title:"Random idea generator",icon:"✨",category:"beginner",level:"BEGINNER",desc:"Generate creative prompts for projects, writing or learning.",why:"Practises arrays, random selection and reusable functions.",skills:"JavaScript · Arrays",code:'const ideas = ["Build a quiz","Draw a poster","Make a calculator"];\\nfunction pickIdea(){\\n return ideas[Math.floor(Math.random()*ideas.length)];\\n}\\nconsole.log(pickIdea());'},
-{id:"budget",title:"Budget planner",icon:"💸",category:"useful",level:"BEGINNER",desc:"Organise sample expenses and calculate a remaining balance.",why:"Useful for practising arithmetic, forms and data display.",skills:"JavaScript · Forms",code:'const budget = 1000;\\nconst expenses = [120, 80, 150];\\nconst total = expenses.reduce((sum,n)=>sum+n,0);\\nconsole.log("Remaining:",budget-total);'},
-{id:"typing",title:"Typing speed test",icon:"⌨️",category:"games",level:"BEGINNER",desc:"Measure typing progress using a short practice passage.",why:"Practises timers, string comparison and responsive feedback.",skills:"JavaScript · Strings",code:'const passage = "Learning by building makes ideas real.";\\nconsole.log("Words to type:", passage.split(" ").length);'}
+/* -------------------- CODE STUDIO -------------------- */
+const starterHTML=`<main class="card">
+  <h1>Hello, creator! ✨</h1>
+  <p>You just built a webpage.</p>
+  <button id="magic">Click me</button>
+  <p id="message"></p>
+</main>`;
+const starterCSS=`body { font-family: system-ui; background: #101526; color: white; padding: 30px; }
+.card { max-width: 500px; margin: auto; padding: 25px; background: #202943; border-radius: 18px; }
+button { padding: 12px 18px; background: #c9ff54; border: 0; border-radius: 10px; cursor: pointer; font-weight: bold; }`;
+const starterJS=`document.querySelector("#magic").addEventListener("click", () => {
+  document.querySelector("#message").textContent = "It works! Keep experimenting 🚀";
+});`;
+function resetEditor(){
+ document.getElementById("htmlCode").value=starterHTML;
+ document.getElementById("cssCode").value=starterCSS;
+ document.getElementById("jsCode").value=starterJS;
+ runCode();
+}
+function makeDocument(){
+ const h=document.getElementById("htmlCode").value;
+ const c=document.getElementById("cssCode").value;
+ const j=document.getElementById("jsCode").value;
+ return `<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>${c.replace(/<\/style/gi,"<\\/style")}</style></head><body>${h}<script>${j.replace(/<\/script/gi,"<\\/script")}<\/script></body></html>`;
+}
+function runCode(){
+ // A sandboxed iframe isolates the user's code from this website.
+ document.getElementById("preview").srcdoc=makeDocument();
+}
+function saveDraft(){
+ try{
+  localStorage.setItem("vybeDraft",JSON.stringify({
+   h:document.getElementById("htmlCode").value,
+   c:document.getElementById("cssCode").value,
+   j:document.getElementById("jsCode").value
+  }));
+  toast("Draft saved on this device.");
+ }catch(e){toast("Could not save this draft.");}
+}
+function loadDraft(){
+ try{
+  const d=JSON.parse(localStorage.getItem("vybeDraft")||"null");
+  if(d){document.getElementById("htmlCode").value=d.h;document.getElementById("cssCode").value=d.c;document.getElementById("jsCode").value=d.j;return true}
+ }catch(e){}
+ return false;
+}
+function downloadProject(){
+ const blob=new Blob([makeDocument()],{type:"text/html;charset=utf-8"});
+ const url=URL.createObjectURL(blob);const a=document.createElement("a");
+ a.href=url;a.download="vybe-project.html";a.click();URL.revokeObjectURL(url);
+ toast("HTML project downloaded.");
+}
+function loadStarter(){navigate("lab");resetEditor();toast("Starter project loaded.");}
+
+/* -------------------- PROJECT GALAXY -------------------- */
+const projects=[
+ {id:"profile",name:"Creator Profile",type:"web",icon:"👤",level:"BEGINNER",desc:"A personal profile card with your bio and links.",skills:"HTML structure, CSS cards, responsive layout",
+ html:`<main class="profile"><div class="avatar">🚀</div><h1>Your Name</h1><p>Student • Creator • Future developer</p><a href="https://github.com">Visit my GitHub ↗</a></main>`,
+ css:`body{font-family:system-ui;background:#0d1425;color:#fff;display:grid;place-items:center;min-height:90vh}.profile{text-align:center;padding:35px;border-radius:24px;background:#1d2942;max-width:400px}.avatar{font-size:55px}.profile a{color:#c9ff54}`},
+ {id:"counter",name:"Smart Counter",type:"tool",icon:"🔢",level:"BEGINNER",desc:"A counter with plus, minus and reset controls.",skills:"DOM selection, events, state",
+ html:`<main class="box"><h1>Smart Counter</h1><p id="count">0</p><button id="minus">−</button> <button id="plus">+</button> <button id="reset">Reset</button></main>`,
+ css:`body{font-family:system-ui;text-align:center;background:#12182a;color:white;padding:30px}.box{max-width:400px;margin:auto;padding:25px;background:#222d49;border-radius:20px}#count{font-size:65px;color:#c9ff54}button{padding:10px 18px;border:0;border-radius:9px;cursor:pointer}`,
+ js:`let n=0;const out=document.querySelector("#count");function update(){out.textContent=n}document.querySelector("#plus").onclick=()=>{n++;update()};document.querySelector("#minus").onclick=()=>{n--;update()};document.querySelector("#reset").onclick=()=>{n=0;update()};`},
+ {id:"todo",name:"Task Tracker",type:"tool",icon:"✅",level:"BEGINNER",desc:"Add tasks and mark them complete.",skills:"Forms, events, creating elements",
+ html:`<main class="box"><h1>My tasks</h1><form id="form"><input id="task" placeholder="Add a task..." required><button>Add</button></form><ul id="list"></ul></main>`,
+ css:`body{font-family:system-ui;background:#111827;color:white;padding:25px}.box{max-width:480px;margin:auto;background:#1e293b;padding:25px;border-radius:18px}input{padding:10px;max-width:65%}button{padding:10px;background:#c9ff54;border:0}li{padding:10px;cursor:pointer}li.done{text-decoration:line-through;color:#91a0b8}`,
+ js:`document.querySelector("#form").addEventListener("submit",e=>{e.preventDefault();const input=document.querySelector("#task");const li=document.createElement("li");li.textContent=input.value;li.onclick=()=>li.classList.toggle("done");document.querySelector("#list").appendChild(li);input.value=""});`},
+ {id:"gradient",name:"Gradient Generator",type:"tool",icon:"🎨",level:"BEGINNER",desc:"Create random CSS gradients and copy the result.",skills:"CSS gradients, random values, DOM",
+ html:`<main class="box"><h1>Gradient Lab</h1><div id="swatch"></div><code id="value"></code><p><button id="generate">New gradient</button> <button id="copy">Copy CSS</button></p></main>`,
+ css:`body{font-family:system-ui;background:#101526;color:white;text-align:center;padding:25px}.box{max-width:500px;margin:auto}#swatch{height:230px;border-radius:20px;margin:20px 0;background:linear-gradient(135deg,#c9ff54,#a58bff)}button{padding:11px;border:0;border-radius:9px;cursor:pointer}`,
+ js:`function make(){const a="#"+Math.floor(Math.random()*16777215).toString(16).padStart(6,"0");const b="#"+Math.floor(Math.random()*16777215).toString(16).padStart(6,"0");const g="linear-gradient(135deg,"+a+","+b+")";document.querySelector("#swatch").style.background=g;document.querySelector("#value").textContent="background: "+g+";"}document.querySelector("#generate").onclick=make;document.querySelector("#copy").onclick=()=>navigator.clipboard?.writeText(document.querySelector("#value").textContent);make();`},
+ {id:"reaction",name:"Reaction Challenge",type:"game",icon:"⚡",level:"BEGINNER",desc:"Test how quickly you react to a changing signal.",skills:"Events, timing, UI state",
+ html:`<main class="box"><h1>Reaction test</h1><button id="go">Start</button><p id="result">Ready?</p></main>`,
+ css:`body{font-family:system-ui;background:#111827;color:white;text-align:center;padding:30px}.box{padding:30px;background:#25304a;border-radius:20px;max-width:450px;margin:auto}button{padding:13px 24px;background:#c9ff54;border:0;border-radius:10px;cursor:pointer}`,
+ js:`let start=0,timer;const btn=document.querySelector("#go");btn.onclick=()=>{clearTimeout(timer);btn.disabled=true;btn.textContent="Wait...";timer=setTimeout(()=>{start=performance.now();btn.disabled=false;btn.textContent="CLICK NOW";btn.style.background="#6ee7a0";btn.onclick=()=>{document.querySelector("#result").textContent="Reaction: "+Math.round(performance.now()-start)+" ms";btn.textContent="Try again";btn.style.background="#c9ff54";btn.onclick=arguments.callee}},1000+Math.random()*2500)};`},
+ {id:"dice",name:"Dice Roller",type:"game",icon:"🎲",level:"BEGINNER",desc:"Roll virtual dice and track the total.",skills:"Random numbers, functions",
+ html:`<main class="box"><h1>Dice roller 🎲</h1><div id="dice" class="dice">⚄</div><h2 id="total">Ready?</h2><button id="roll">Roll dice</button></main>`,
+ css:`body{font-family:system-ui;background:#151326;color:white;text-align:center;padding:30px}.box{padding:30px;background:#292342;border-radius:20px;max-width:400px;margin:auto}.dice{font-size:90px}button{padding:12px;background:#c9ff54;border:0;border-radius:10px}`,
+ js:`const faces=["⚀","⚁","⚂","⚃","⚄","⚅"];document.querySelector("#roll").onclick=()=>{const n=Math.floor(Math.random()*6);document.querySelector("#dice").textContent=faces[n];document.querySelector("#total").textContent="You rolled "+(n+1)};`},
+ {id:"quiz",name:"Quick Quiz",type:"game",icon:"❓",level:"BEGINNER",desc:"A small quiz with feedback and score.",skills:"Arrays, conditions, click events",
+ html:`<main class="box"><h1>Quick Quiz</h1><p>Which language styles a webpage?</p><button data-a="no">HTML</button><button data-a="yes">CSS</button><button data-a="no">Java</button><p id="answer"></p></main>`,
+ css:`body{font-family:system-ui;background:#101526;color:white;padding:30px}.box{max-width:500px;margin:auto;padding:25px;background:#202943;border-radius:20px}button{margin:4px;padding:12px;border:0;border-radius:9px;cursor:pointer}`,
+ js:`document.querySelectorAll("button[data-a]").forEach(b=>b.onclick=()=>{document.querySelector("#answer").textContent=b.dataset.a==="yes"?"Correct! CSS styles webpages.":"Not quite. Try again!";});`},
+ {id:"clock",name:"Live Clock",type:"tool",icon:"🕒",level:"BEGINNER",desc:"A clock that updates every second.",skills:"Date object, timers",
+ html:`<main class="box"><h1>Local clock</h1><div id="clock">--:--:--</div><p>Uses your device's local time.</p></main>`,
+ css:`body{font-family:system-ui;background:#0d1720;color:white;text-align:center;padding:35px}.box{max-width:500px;margin:auto;padding:30px;background:#183142;border-radius:20px}#clock{font-size:48px;color:#5de4f5;font-weight:900}`,
+ js:`function tick(){document.querySelector("#clock").textContent=new Date().toLocaleTimeString()}tick();setInterval(tick,1000);`}
 ];
-$("projectCount").textContent=projectData.length;
-let category="all";
 function renderProjects(){
- const q=$("projectSearch").value.toLowerCase();$("projectGrid").innerHTML="";
- const list=projectData.filter(p=>(category==="all"||p.category===category||(category==="beginner"&&p.level==="BEGINNER"))&&(p.title+" "+p.desc+" "+p.skills).toLowerCase().includes(q));
- list.forEach(p=>{
-  const c=document.createElement("article");c.className="card project-card";
-  const icon=document.createElement("div");icon.className="icon";icon.textContent=p.icon;
-  const tag=document.createElement("span");tag.className="tag";tag.textContent=p.level;
-  const h=document.createElement("h3");h.textContent=p.title;
-  const desc=document.createElement("p");desc.textContent=p.desc;
-  const skills=document.createElement("p");skills.textContent=p.skills;skills.style.color="var(--cyan)";
-  const b=document.createElement("button");b.className="btn primary";b.textContent="View source code ↗";b.addEventListener("click",()=>showProject(p));
-  c.append(icon,tag,h,desc,skills,b);$("projectGrid").append(c);
- });
- if(!list.length)$("projectGrid").textContent="No matching projects. Try another search.";
+ const q=(document.getElementById("projectSearch").value||"").toLowerCase();
+ const f=document.getElementById("projectFilter").value;
+ const list=projects.filter(p=>(f==="all"||p.type===f)&&(p.name+" "+p.desc+" "+p.skills).toLowerCase().includes(q));
+ document.getElementById("projectGrid").innerHTML=list.map(p=>`<article class="card">
+ <div class="card-icon">${p.icon}</div><span class="pill">${p.type.toUpperCase()}</span>
+ <h3 style="margin-top:10px">${escapeHTML(p.name)}</h3><p>${escapeHTML(p.desc)}</p>
+ <div class="small-text">Skills: ${escapeHTML(p.skills)}</div>
+ <div class="btn-row"><button class="btn primary small" onclick="openProject('${p.id}')">Open project →</button></div></article>`).join("")||"<p>No projects found. Try a different search.</p>";
 }
-function showProject(p){
- const box=$("projectDetail");box.style.display="block";box.innerHTML="";
- const tag=document.createElement("span");tag.className="tag";tag.textContent=p.level;
- const h=document.createElement("h2");h.style.marginTop="12px";h.textContent=p.icon+" "+p.title;
- const desc=document.createElement("p");desc.textContent=p.desc;
- const why=document.createElement("p");why.className="muted small";why.textContent="Why it matters: "+p.why;
- const skills=document.createElement("p");skills.textContent="Skills: "+p.skills;
- const pre=document.createElement("textarea");pre.className="code-area";pre.readOnly=true;pre.value=p.code;
- const actions=document.createElement("div");actions.className="actions";
- const copy=document.createElement("button");copy.className="btn primary";copy.textContent="Copy source code";
- copy.addEventListener("click",()=>copyText(p.code));
- const run=document.createElement("button");run.className="btn";run.textContent="Try in playground";
- run.addEventListener("click",()=>{$("editor").value=p.code;page("learn");$("preview").srcdoc=p.code;toast("Source loaded into playground.");});
- actions.append(copy,run);box.append(tag,h,desc,why,skills,pre,actions);
- box.scrollIntoView({behavior:"smooth",block:"start"});
+function openProject(id){
+ const p=projects.find(x=>x.id===id);if(!p)return;
+ const detail=document.getElementById("projectDetail");
+ detail.classList.remove("hidden");
+ detail.innerHTML=`<span class="pill">PROJECT DETAILS</span><h2 style="margin-top:12px">${p.icon} ${escapeHTML(p.name)}</h2><p>${escapeHTML(p.desc)}</p><p><strong>What you'll learn:</strong> ${escapeHTML(p.skills)}</p><p>Explore the HTML structure, styling and JavaScript logic. Modify them to make the project your own.</p><div class="btn-row"><button class="btn primary" onclick="loadProject('${p.id}')">Load into Code Studio →</button><button class="btn" onclick="closeProject()">Close</button></div>`;
+ detail.scrollIntoView({behavior:"smooth",block:"start"});
 }
-document.querySelectorAll("[data-category]").forEach(b=>b.addEventListener("click",()=>{category=b.dataset.category;document.querySelectorAll("[data-category]").forEach(x=>x.classList.toggle("active",x===b));renderProjects()}));
-$("projectSearch").addEventListener("input",renderProjects);renderProjects();
-const starterCode=$("editor").value;
-function runCode(){ $("preview").srcdoc=$("editor").value; }
-$("runCode").addEventListener("click",runCode);
-$("resetCode").addEventListener("click",()=>{$("editor").value=starterCode;runCode()});
-runCode();
+function closeProject(){document.getElementById("projectDetail").classList.add("hidden")}
+function loadProject(id){
+ const p=projects.find(x=>x.id===id);if(!p)return;
+ document.getElementById("htmlCode").value=p.html;
+ document.getElementById("cssCode").value=p.css;
+ document.getElementById("jsCode").value=p.js||"";
+ runCode();if(!data.projects.includes(id)){data.projects.push(id);persist();earnXP(10)}
+ navigate("lab");toast("Project loaded. Make it your own!");
+}
 
-/* Quiz engine: randomized arithmetic and a reusable set of verified concept questions. */
-const fixed={
-logic:[
-{q:"Which one is different: square, triangle, circle, cube?",opts:["Square","Triangle","Circle","Cube"],a:3,why:"A cube is three-dimensional; the others are flat 2D shapes."},
-{q:"If all Zips are Zaps and all Zaps are Zops, are all Zips Zops?",opts:["Yes","No","Cannot ever be true","Only sometimes"],a:0,why:"The statement follows through the two groups."},
-{q:"What comes next: 3, 6, 12, 24, ...?",opts:["30","36","48","42"],a:2,why:"Each term is doubled."}],
-web:[
-{q:"Which language primarily structures a webpage?",opts:["HTML","SQL","Python only","Bash"],a:0,why:"HTML describes the structure and meaning of webpage content."},
-{q:"What does CSS primarily control?",opts:["Page appearance and layout","Wi-Fi speed","Computer hardware","Passwords"],a:0,why:"CSS styles content, including colour, spacing, layout and responsive design."},
-{q:"Which JavaScript keyword declares a block-scoped variable that can be reassigned?",opts:["let","heading","style","return"],a:0,why:"let declares a block-scoped variable that can be reassigned."}],
-safety:[
-{q:"A stranger asks for your one-time verification code. What should you do?",opts:["Send it","Post it publicly","Keep it private","Send it if they sound friendly"],a:2,why:"Verification codes can allow someone to access your account. Keep them private."},
-{q:"How should you check a surprising online claim?",opts:["Share it immediately","Check trustworthy independent sources","Trust the number of likes","Trust any screenshot"],a:1,why:"Verify the claim and its context before sharing."}],
-science:[
-{q:"Which unit measures electric current?",opts:["Volt","Ohm","Ampere","Watt"],a:2,why:"Electric current is measured in amperes (A)."},
-{q:"Which gas do plants absorb during photosynthesis?",opts:["Oxygen","Carbon dioxide","Hydrogen","Helium"],a:1,why:"Plants use carbon dioxide and water to produce glucose during photosynthesis."}]
+/* -------------------- QUESTION GENERATOR -------------------- */
+const banks={
+ web:[
+  ["Which language gives a webpage its structure?",["HTML","CSS","SQL","PNG"],0,"HTML provides the structure of a webpage."],
+  ["Which language styles a webpage?",["Python","CSS","Java","JSON"],1,"CSS controls colors, layout, spacing and more."],
+  ["What does JavaScript add to a webpage?",["Only images","Interactivity","Internet access automatically","A domain name"],1,"JavaScript can respond to user actions and update a page."],
+  ["What does Git help you track?",["Version history","Screen brightness","Wi-Fi speed","Battery health"],0,"Git tracks changes to files and helps manage versions."],
+  ["What does HTML stand for?",["HyperText Markup Language","High Transfer Machine Logic","Home Tool Markup Link","Hyper Transfer Mode Language"],0,"HTML stands for HyperText Markup Language."],
+  ["Which tag creates a hyperlink?",["<link>","<a>","<href>","<url>"],1,"The anchor tag <a> creates links."]
+ ],
+ science:[
+  ["What is the SI unit of electric current?",["Volt","Ohm","Ampere","Watt"],2,"Electric current is measured in amperes."],
+  ["Which gas do plants absorb for photosynthesis?",["Oxygen","Carbon dioxide","Nitrogen","Hydrogen"],1,"Plants use carbon dioxide and water to make food using light."],
+  ["Which part of a cell contains most genetic material?",["Ribosome","Nucleus","Cell wall","Vacuole"],1,"In typical eukaryotic cells, most DNA is in the nucleus."],
+  ["What is the pH of a neutral solution at 25°C?",["0","7","10","14"],1,"A neutral aqueous solution has pH 7 at 25°C."],
+  ["Which lens converges parallel light rays?",["Concave lens","Convex lens","Plane mirror","Prism only"],1,"A convex lens converges parallel rays toward its focus."]
+ ],
+ logic:[
+  ["Complete the sequence: 2, 4, 8, 16, ?",["18","24","32","30"],2,"Each term is multiplied by 2."],
+  ["If all Bloops are Razzies and all Razzies are Lazzies, are all Bloops Lazzies?",["Yes","No","Cannot be sure","Only some"],0,"The relationship carries through both groups."],
+  ["Which number does not belong: 4, 9, 16, 20, 25?",["4","9","20","25"],2,"4, 9, 16 and 25 are perfect squares; 20 is not."],
+  ["A clock shows 3:00. What is the angle between its hands?",["45°","60°","90°","180°"],2,"At 3:00, the hands form a right angle."]
+ ],
+ safety:[
+  ["What should you do with a suspicious login link?",["Click quickly","Share it","Verify the site independently","Enter your password"],2,"Visit the official website directly instead of trusting suspicious links."],
+  ["Is it safe to share a one-time password with someone who calls you?",["Yes, if they sound official","No","Only on weekends","Yes, if they know your name"],1,"Never share OTPs. Legitimate support staff should not ask you to reveal them."],
+  ["What makes a password stronger?",["Using your name","Reusing one password","A long, unique password","Using 123456"],2,"Use long, unique passwords and a reputable password manager."],
+  ["What should you do before downloading an unknown app?",["Check its source and permissions","Disable all protection","Give it every permission","Ignore reviews and publisher"],0,"Check the official source, publisher, permissions and trustworthy reviews."]
+ ]
 };
-let activeQuiz=null,quizDone=false;
-function newQuiz(){
- quizDone=false;$("explanation").textContent="Choose an answer to check your reasoning.";
+let qNumber=0,qScore=0,qAnswered=false,currentQuestion=null;
+function shuffle(arr){return arr.map(x=>[Math.random(),x]).sort((a,b)=>a[0]-b[0]).map(x=>x[1])}
+function newQuestion(){
+ qNumber++;qAnswered=false;
+ const category=document.getElementById("quizCategory").value;
  let q;
- if(topic==="math"){
-  const a=2+Math.floor(Math.random()*48),b=2+Math.floor(Math.random()*20),op=Math.random()<.5?"+":"×";
-  const ans=op==="+"?a+b:a*b;
-  const opts=new Set([ans,ans+(2+Math.floor(Math.random()*8)),Math.max(0,ans-(2+Math.floor(Math.random()*7))),ans+10+Math.floor(Math.random()*15)]);
-  while(opts.size<4)opts.add(ans+opts.size+13);
-  const arr=[...opts].sort(()=>Math.random()-.5);
-  q={q:"What is "+a+" "+op+" "+b+"?",opts:arr.map(String),a:arr.indexOf(ans),why:"Calculate carefully: "+a+" "+op+" "+b+" = "+ans+"."};
+ if(category==="math"){
+  const op=["+","−","×","÷"][Math.floor(Math.random()*4)];
+  let a,b,answer,explanation;
+  if(op==="+"){a=rand(12,150);b=rand(3,100);answer=a+b;explanation=`Add the numbers: ${a} + ${b} = ${answer}.`}
+  else if(op==="−"){a=rand(30,180);b=rand(1,a);answer=a-b;explanation=`Subtract: ${a} − ${b} = ${answer}.`}
+  else if(op==="×"){a=rand(2,20);b=rand(2,15);answer=a*b;explanation=`Multiply: ${a} × ${b} = ${answer}.`}
+  else{b=rand(2,12);answer=rand(2,15);a=b*answer;explanation=`Divide: ${a} ÷ ${b} = ${answer}.`}
+  const opts=new Set([answer]);
+  while(opts.size<4){let v=answer+rand(-Math.max(8,Math.abs(answer)*.25),Math.max(8,Math.abs(answer)*.25));if(v>=0&&v!==answer)opts.add(v)}
+  q=[`${a} ${op} ${b} = ?`,shuffle([...opts]),answer,explanation];
  }else{
-  const list=fixed[topic];q=list[Math.floor(Math.random()*list.length)];
+  const raw=banks[category][Math.floor(Math.random()*banks[category].length)];
+  q=[raw[0],raw[1],raw[1][raw[2]],raw[3]];
  }
- activeQuiz=q;$("quizTopic").textContent=({math:"MATHS",logic:"LOGIC",web:"WEB & CODING",safety:"INTERNET SAFETY",science:"SCIENCE"})[topic];
- $("question").textContent=q.q;$("answers").innerHTML="";
- q.opts.forEach((o,i)=>{const b=document.createElement("button");b.className="quiz-option";b.textContent=o;b.addEventListener("click",()=>answerQuiz(i,b));$("answers").append(b)});
+ currentQuestion=q;
+ document.getElementById("quizCount").textContent="Question "+qNumber;
+ document.getElementById("quizScore").textContent="Score: "+qScore;
+ document.getElementById("question").textContent=q[0];
+ document.getElementById("feedback").textContent="";
+ document.getElementById("nextQuestion").textContent="Next question →";
+ document.getElementById("answers").innerHTML=q[1].map((v,i)=>`<button class="answer" onclick="answerQuestion(this,${JSON.stringify(String(v)).replace(/</g,"\\u003c")})">${escapeHTML(v)}</button>`).join("");
 }
-function answerQuiz(i,button){
- if(quizDone)return;quizDone=true;answered++;$("answered").textContent=answered;
- const buttons=[...$("answers").children];buttons[activeQuiz.a].classList.add("good");
- if(i===activeQuiz.a){streak++;award(10);$("explanation").textContent="Correct! "+activeQuiz.why}
- else{streak=0;button.classList.add("bad");$("explanation").textContent="Not quite. "+activeQuiz.why}
- $("streak").textContent=streak;
-}
-$("nextQuiz").addEventListener("click",newQuiz);
-document.querySelectorAll("[data-topic]").forEach(b=>b.addEventListener("click",()=>{topic=b.dataset.topic;document.querySelectorAll("[data-topic]").forEach(x=>x.classList.toggle("active",x===b));newQuiz()}));
-newQuiz();
-
-/* Mind games */
-let secret=0,guesses=0,sequenceAnswer=0,memorySequence=[];
-function newGuess(){secret=1+Math.floor(Math.random()*100);guesses=0;$("guessInput").value="";$("guessMessage").textContent="I'm thinking of a new number from 1 to 100."; $("guessCount").textContent="Guesses: 0"}
-$("newGuess").addEventListener("click",newGuess);newGuess();
-$("submitGuess").addEventListener("click",()=>{
- const n=Number($("guessInput").value);
- if(!$("guessInput").value||n<1||n>100||!Number.isInteger(n)){toast("Enter a whole number from 1 to 100.");return}
- guesses++;$("guessCount").textContent="Guesses: "+guesses;
- if(n===secret){$("guessMessage").textContent="You found it in "+guesses+" guesses!";award(5)}
- else $("guessMessage").textContent=n<secret?"Too low — try a bigger number.":"Too high — try a smaller number.";
-});
-function newSequence(){
- const start=1+Math.floor(Math.random()*15),step=2+Math.floor(Math.random()*9);
- sequenceAnswer=start+step*4;
- $("sequenceQuestion").textContent=[0,1,2,3].map(i=>start+step*i).join(", ")+", ?";
- $("sequenceAnswer").value="";$("sequenceResult").textContent="Find the number added each time.";
-}
-$("newSequence").addEventListener("click",newSequence);newSequence();
-$("checkSequence").addEventListener("click",()=>{
- if(!$("sequenceAnswer").value){toast("Enter your answer first.");return}
- if(Number($("sequenceAnswer").value)===sequenceAnswer){$("sequenceResult").textContent="Correct! You spotted the pattern.";award(5)}
- else $("sequenceResult").textContent="Not quite. Look at the difference between consecutive numbers.";
-});
-$("startMemory").addEventListener("click",()=>{
- memorySequence=Array.from({length:4},()=>Math.floor(Math.random()*9)+1);
- $("memoryDisplay").textContent=memorySequence.join("  ·  ");$("memoryResult").textContent="Remember the numbers!";
- $("memoryAnswer").value="";
- setTimeout(()=>{$("memoryDisplay").textContent="Sequence hidden — type what you remember."},1800);
-});
-$("checkMemory").addEventListener("click",()=>{
- if(!memorySequence.length){toast("Press Start first.");return}
- const guess=$("memoryAnswer").value.trim().split(/[\s,]+/).map(Number);
- if(guess.join(",")===memorySequence.join(",")){$("memoryResult").textContent="Perfect memory!";award(5)}
- else $("memoryResult").textContent="The sequence was "+memorySequence.join(" ") + ". Try another round.";
- memorySequence=[];
-});
-document.querySelectorAll("[data-rps]").forEach(b=>b.addEventListener("click",()=>{
- const player=b.dataset.rps,opts=["rock","paper","scissors"],cpu=opts[Math.floor(Math.random()*3)];
- const result=player===cpu?"It's a draw!":((player==="rock"&&cpu==="scissors")||(player==="paper"&&cpu==="rock")||(player==="scissors"&&cpu==="paper"))?"You win!":"Computer wins this round.";
- $("rpsResult").textContent="You: "+player+" · Computer: "+cpu+". "+result;
- if(result==="You win!")award(3);
-}));
-
-/* Tools */
-$("calcPct").addEventListener("click",()=>{
- if($("pct").value===""||$("base").value===""){toast("Enter both numbers.");return}
- const n=Number($("pct").value)*Number($("base").value)/100;
- $("pctResult").textContent=Number($("pct").value)+"% of "+Number($("base").value)+" = "+Number(n.toFixed(6));
-});
-$("counterText").addEventListener("input",()=>{
- const s=$("counterText").value,w=s.trim()?s.trim().split(/\s+/).length:0;
- $("words").textContent=w;$("chars").textContent=s.length;$("read").textContent=w?Math.max(1,Math.ceil(w/200))+"m":"0m";
-});
-document.querySelectorAll("[data-transform]").forEach(b=>b.addEventListener("click",()=>{
- const el=$("transformText"),v=el.value;
- if(b.dataset.transform==="upper")el.value=v.toUpperCase();
- if(b.dataset.transform==="lower")el.value=v.toLowerCase();
- if(b.dataset.transform==="title")el.value=v.toLowerCase().replace(/\b\w/g,c=>c.toUpperCase());
-}));
-async function copyText(text){
- if(!text){toast("Nothing to copy.");return}
- try{await navigator.clipboard.writeText(text);toast("Copied!")}
- catch{const t=document.createElement("textarea");t.value=text;document.body.append(t);t.select();try{document.execCommand("copy");toast("Copied!")}catch{toast("Please select and copy manually.")}t.remove()}
-}
-$("copyTransformed").addEventListener("click",()=>copyText($("transformText").value));
-const wordBank=["river","orbit","mango","velvet","comet","forest","cobalt","puzzle","silver","planet","canvas","ember","meadow","signal","breeze","tiger","coral","rocket"];
-$("makePassword").addEventListener("click",()=>{
- const arr=Array.from({length:4},()=>wordBank[Math.floor(Math.random()*wordBank.length)]);
- $("passwordResult").textContent=arr.join("-")+"-"+Math.floor(100+Math.random()*900);
-});
-$("copyPassword").addEventListener("click",()=>copyText($("passwordResult").textContent));
-
-/* Resources */
-const resources=[
-["MDN Web Docs","Reliable web development references","https://developer.mozilla.org/","Code"],
-["freeCodeCamp","Free interactive coding lessons","https://www.freecodecamp.org/","Code"],
-["W3Schools","Beginner tutorials and examples","https://www.w3schools.com/","Code"],
-["Python Docs","Official Python tutorial and reference","https://docs.python.org/3/tutorial/","Code"],
-["Java Learning","Official Java learning resources","https://dev.java/learn/","Code"],
-["GitHub","Host projects and learn version control","https://github.com/","Build"],
-["GitHub Skills","Learn GitHub through guided exercises","https://skills.github.com/","Build"],
-["Code.org","Introductory computer science activities","https://code.org/","Learn"],
-["Khan Academy","Free maths, science and computing lessons","https://www.khanacademy.org/","Learn"],
-["Scratch","Create animations, stories and games","https://scratch.mit.edu/","Create"],
-["Canva Design School","Explore design skills and tutorials","https://www.canva.com/designschool/","Create"],
-["Google Applied Digital Skills","Practical digital skill lessons","https://applieddigitalskills.withgoogle.com/","Learn"]
-];
-function renderResources(){
- const q=$("resourceSearch").value.toLowerCase();$("resourceGrid").innerHTML="";
- resources.filter(r=>r.join(" ").toLowerCase().includes(q)).forEach(r=>{
-  const c=document.createElement("div");c.className="card";
-  const tag=document.createElement("span");tag.className="tag";tag.textContent=r[3];
-  const h=document.createElement("h3");h.style.marginTop="12px";h.textContent=r[0];
-  const p=document.createElement("p");p.textContent=r[1];
-  const a=document.createElement("a");a.href=r[2];a.target="_blank";a.rel="noopener noreferrer";a.className="btn primary";a.style.display="inline-block";a.style.marginTop="13px";a.textContent="Open website ↗";
-  c.append(tag,h,p,a);$("resourceGrid").append(c);
+function answerQuestion(btn,value){
+ if(qAnswered)return;qAnswered=true;data.answered++;
+ const right=String(currentQuestion[2])===String(value);
+ if(right){data.correct++;qScore++;earnXP(5);document.getElementById("feedback").textContent="Correct! "+currentQuestion[3]}
+ else{document.getElementById("feedback").textContent="Not quite. Answer: "+currentQuestion[2]+". "+currentQuestion[3]}
+ document.querySelectorAll("#answers .answer").forEach(b=>{
+  if(b.textContent===String(currentQuestion[2]))b.classList.add("correct");
+  else if(b===btn)b.classList.add("wrong");
  });
- if(!$("resourceGrid").children.length)$("resourceGrid").textContent="No resources match that search.";
+ document.getElementById("quizScore").textContent="Score: "+qScore;
+ persist();
 }
-$("resourceSearch").addEventListener("input",renderResources);renderResources();
+function rand(min,max){return Math.floor(Math.random()*(max-min+1))+min}
 
-/* Global search jumps to a matching section and filters relevant catalogues. */
-$("search").addEventListener("keydown",e=>{if(e.key==="Enter")doSearch()});
-function doSearch(){
- const q=$("search").value.trim().toLowerCase();if(!q)return;
- if(/quiz|question|math|science|logic|brain/.test(q)){page("quiz");if(/science/.test(q))setTopic("science");else if(/logic/.test(q))setTopic("logic");else if(/math/.test(q))setTopic("math");return}
- if(/game|memory|guess|puzzle/.test(q)){page("games");return}
- if(/tool|calculator|word|percent|password|text/.test(q)){page("tools");return}
- if(/resource|course|docs|link|learn/.test(q)){page("resources");$("resourceSearch").value=q;renderResources();return}
- if(/project|source|app|build/.test(q)){page("projects");$("projectSearch").value=q;renderProjects();return}
- if(/html|css|javascript|python|java|code|program/.test(q)){page("learn");const lang=/python/.test(q)?"python":/\bjava\b/.test(q)?"java":/javascript|js/.test(q)?"javascript":/css/.test(q)?"css":"html";showLanguage(lang);return}
- toast("Try searching for coding, projects, quiz, games, tools or resources.");
+/* -------------------- MINI-GAMES -------------------- */
+let secret=0,guesses=0;
+function startGuess(){secret=rand(1,100);guesses=0;document.getElementById("guessFeedback").textContent="New number ready. You have 7 attempts.";document.getElementById("guessInput").value=""}
+function guessNumber(){
+ const v=Number(document.getElementById("guessInput").value),out=document.getElementById("guessFeedback");
+ if(!v||v<1||v>100||!Number.isInteger(v)){out.textContent="Enter a whole number from 1 to 100.";return}
+ guesses++;
+ if(v===secret){out.textContent=`Correct! You found it in ${guesses} attempt(s).`;earnXP(10);startGuess();return}
+ if(guesses>=7){out.textContent=`Out of attempts! The number was ${secret}. Start a new game.`;return}
+ out.textContent=(v<secret?"Too low! Try higher.":"Too high! Try lower.")+` Attempts left: ${7-guesses}.`;
 }
-$("search").addEventListener("change",doSearch);
-function setTopic(t){topic=t;document.querySelectorAll("[data-topic]").forEach(x=>x.classList.toggle("active",x.dataset.topic===t));newQuiz()}
+document.getElementById("guessInput").addEventListener("keydown",e=>{if(e.key==="Enter")guessNumber()});
+
+let memValues=[],memOpen=[],memMatched=[],memMoves=0,memLock=false;
+function startMemory(){
+ memValues=shuffle(["🍎","🚀","🎮","🌈","🐼","⚽","🎧","⭐", "🍎","🚀","🎮","🌈","🐼","⚽","🎧","⭐"]);
+ memOpen=[];memMatched=[];memMoves=0;memLock=false;renderMemory();
+ document.getElementById("memoryFeedback").textContent="Tap two tiles to find a matching pair.";
+}
+function renderMemory(){
+ document.getElementById("memoryMoves").textContent="Moves: "+memMoves;
+ document.getElementById("memoryPairs").textContent=`Pairs: ${memMatched.length/2}/8`;
+ document.getElementById("memoryGrid").innerHTML=memValues.map((v,i)=>{
+  const open=memOpen.includes(i)||memMatched.includes(i);
+  return `<button class="memory-tile ${open?"open":""} ${memMatched.includes(i)?"matched":""}" aria-label="${open?v:"Hidden tile"}" onclick="flipMemory(${i})">${open?v:"?"}</button>`;
+ }).join("");
+}
+function flipMemory(i){
+ if(memLock||memOpen.includes(i)||memMatched.includes(i))return;
+ memOpen.push(i);
+ if(memOpen.length===2){
+  memMoves++;
+  if(memValues[memOpen[0]]===memValues[memOpen[1]]){
+   memMatched.push(...memOpen);memOpen=[];
+   if(memMatched.length===memValues.length){document.getElementById("memoryFeedback").textContent=`Completed in ${memMoves} moves!`;earnXP(Math.max(5,40-memMoves))}
+  }else{
+   memLock=true;const pair=[...memOpen];
+   setTimeout(()=>{memOpen=[];memLock=false;renderMemory()},650);
+  }
+ }
+ renderMemory();
+}
+let rpsYou=0,rpsCPU=0;
+function playRPS(choice){
+ const options=["rock","paper","scissors"],cpu=options[rand(0,2)];
+ let result=choice===cpu?"Draw!":(
+ (choice==="rock"&&cpu==="scissors")||(choice==="paper"&&cpu==="rock")||(choice==="scissors"&&cpu==="paper")
+ )?"You win this round!":"Computer wins this round.";
+ if(result.startsWith("You win"))rpsYou++;else if(result.startsWith("Computer"))rpsCPU++;
+ document.getElementById("rpsResult").textContent=`You: ${choice} · Computer: ${cpu} — ${result}`;
+ document.getElementById("rpsScore").textContent=`You ${rpsYou} — ${rpsCPU} Computer`;
+ if(rpsYou===5||rpsCPU===5){toast(rpsYou===5?"You won the match!":"Computer won the match.");rpsYou=0;rpsCPU=0;document.getElementById("rpsScore").textContent="Match over · score reset";earnXP(5)}
+}
+function resetRPS(){rpsYou=0;rpsCPU=0;document.getElementById("rpsScore").textContent="You 0 — 0 Computer";document.getElementById("rpsResult").textContent="Make your move."}
+
+let reactionState="idle",reactionTimer=null,reactionStart=0;
+function reactionAction(){
+ const btn=document.getElementById("reactionBtn"),out=document.getElementById("reactionResult");
+ if(reactionState==="waiting"){
+  clearTimeout(reactionTimer);reactionState="idle";btn.textContent="Start test";btn.style.background="";
+  out.textContent="Too soon! Start again.";return;
+ }
+ if(reactionState==="ready"){
+  const ms=Math.round(performance.now()-reactionStart);reactionState="idle";btn.textContent="Try again";btn.style.background="";
+  out.textContent=ms+" ms";
+  if(data.bestReaction===null||ms<data.bestReaction){data.bestReaction=ms;persist();out.textContent+=" · New best!"}
+  earnXP(3);return;
+ }
+ reactionState="waiting";btn.textContent="Wait for green...";btn.style.background="";
+ out.textContent="Wait for green...";
+ reactionTimer=setTimeout(()=>{
+  if(reactionState!=="waiting")return;
+  reactionState="ready";reactionStart=performance.now();btn.textContent="CLICK NOW!";btn.style.background="#67e89b";out.textContent="GO!";
+ },rand(1500,4000));
+}
+
+/* -------------------- DIGITAL TOOLS -------------------- */
+function calcPercent(){
+ const p=Number(document.getElementById("percent").value),n=Number(document.getElementById("baseNumber").value);
+ if(document.getElementById("percent").value===""||document.getElementById("baseNumber").value===""){document.getElementById("percentResult").textContent="Enter both values.";return}
+ document.getElementById("percentResult").textContent=`${p}% of ${n} = ${Number((p/100*n).toFixed(8))}`;
+}
+function countWords(){
+ const t=document.getElementById("wordText").value.trim();
+ const words=t?t.split(/\s+/).length:0;
+ document.getElementById("wordCount").textContent=words;
+ document.getElementById("charCount").textContent=document.getElementById("wordText").value.length;
+ document.getElementById("readTime").textContent="Estimated reading time: "+(words?Math.max(1,Math.ceil(words/200)):0)+" min";
+}
+function transformText(mode){
+ const t=document.getElementById("transformInput").value;let out=t;
+ if(mode==="upper")out=t.toUpperCase();
+ if(mode==="lower")out=t.toLowerCase();
+ if(mode==="title")out=t.toLowerCase().replace(/\b\w/g,c=>c.toUpperCase());
+ if(mode==="reverse")out=Array.from(t).reverse().join("");
+ document.getElementById("transformOutput").value=out;
+}
+async function copyText(id){
+ const text=document.getElementById(id).value;
+ try{await navigator.clipboard.writeText(text);toast("Copied to clipboard.");}
+ catch(e){document.getElementById(id).select();toast("Select the text and copy it manually.");}
+}
+const unitFactors={m:1,km:1000,cm:.01,mi:1609.344};
+function convertUnits(){
+ const v=Number(document.getElementById("unitValue").value),from=document.getElementById("unitFrom").value,to=document.getElementById("unitTo").value;
+ const result=v*unitFactors[from]/unitFactors[to];
+ document.getElementById("unitResult").textContent=`${v} ${from} = ${Number(result.toPrecision(9))} ${to}`;
+}
+
+/* -------------------- RESOURCE SEARCH -------------------- */
+const resources=[
+ ["MDN Web Docs","HTML, CSS and JavaScript documentation","🌐","https://developer.mozilla.org/"],
+ ["freeCodeCamp","Free coding courses and practical projects","🎓","https://www.freecodecamp.org/"],
+ ["W3Schools","Beginner-friendly web tutorials","📘","https://www.w3schools.com/"],
+ ["Python Docs","Official Python language documentation","🐍","https://docs.python.org/3/"],
+ ["Java Tutorials","Official Java learning resources","☕","https://dev.java/learn/"],
+ ["GitHub","Host code and collaborate on projects","🐙","https://github.com/"],
+ ["GitHub Skills","Learn GitHub with interactive courses","🛠️","https://skills.github.com/"],
+ ["Khan Academy","Maths, computing and science lessons","🧠","https://www.khanacademy.org/"],
+ ["Code.org","Computer science lessons and activities","💻","https://code.org/"],
+ ["Scratch","Create games and animations visually","🐱","https://scratch.mit.edu/"],
+ ["Canva Design School","Learn visual design skills","🎨","https://www.canva.com/designschool/"],
+ ["Google Applied Digital Skills","Practical digital skills lessons","🚀","https://applieddigitalskills.withgoogle.com/"]
+];
+function renderResources(filter=""){
+ const q=filter.toLowerCase();
+ document.getElementById("resourceGrid").innerHTML=resources.filter(r=>r.join(" ").toLowerCase().includes(q)).map(r=>`<article class="card"><div class="card-icon">${r[2]}</div><h3>${escapeHTML(r[0])}</h3><p>${escapeHTML(r[1])}</p><a href="${r[3]}" target="_blank" rel="noopener noreferrer">Visit official website ↗</a></article>`).join("")||"<p>No resources match your search.</p>";
+}
+function filterResources(){renderResources(document.getElementById("resourceSearch").value)}
+
+/* -------------------- GLOBAL SEARCH -------------------- */
+function globalSearch(){
+ const q=document.getElementById("globalSearch").value.trim().toLowerCase();
+ if(!q)return;
+ const matches=navItems.filter(x=>x[0].includes(q)||x[2].toLowerCase().includes(q));
+ if(matches.length){navigate(matches[0][0]);return}
+ if(projects.some(p=>(p.name+" "+p.desc+" "+p.skills).toLowerCase().includes(q))){
+  navigate("projects");document.getElementById("projectSearch").value=q;renderProjects();return;
+ }
+ if(resources.some(r=>r.join(" ").toLowerCase().includes(q))){
+  navigate("resources");document.getElementById("resourceSearch").value=q;filterResources();return;
+ }
+ toast("No match found. Try a project, tool or section name.");
+}
+document.addEventListener("keydown",e=>{
+ if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="k"){
+  e.preventDefault();const s=document.getElementById("globalSearch");if(s){s.focus();s.select()}
+ }
+});
+
+/* -------------------- STARTUP -------------------- */
+buildNav();updateStats();renderProjects();renderResources();startGuess();startMemory();
+if(!loadDraft())resetEditor();else runCode();
+newQuestion();convertUnits();
 </script>
 </body>
 </html>
